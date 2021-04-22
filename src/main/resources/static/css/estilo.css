@@ -1,0 +1,60 @@
+.container-principal{
+    margin-top: 16px;
+}
+
+.card{
+    margin-bottom: 16px;
+}
+
+footer{
+    background-color: #fad1de;
+    color: #df167b;
+    text-align: center;
+    padding: 32px;
+
+}
+
+ul{
+    margin-bottom: 0;
+}
+
+li{
+    list-style: none;
+}
+
+.container-header-funcionario{
+    margin-top: 24px;
+    margin-bottom: 24px;
+    padding: 32px;
+    color: #df167b;
+    background-color: #fad1de;
+    border-radius: 15px;
+    text-align: center;
+    
+}
+
+.container-funcionario{
+    border: 1px solid #df167b;
+    border-radius: 15px;
+    padding: 16px;
+    
+}
+
+.td-controle{
+    width: 90px;
+}
+
+.container-btn-novo{
+    width: 100%;
+    text-align: right;
+    margin-bottom: 8px;
+}
+
+
+.container-form-funcionario{
+    border: 1px solid #df167b;
+    border-radius: 15px;
+    padding: 16px;
+    width: 60%;
+    
+}

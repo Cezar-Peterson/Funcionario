@@ -22,4 +22,13 @@ public class FuncionarioServiceImpl implements FuncionarioService{
     public Funcionario findById(Long id) {
         return null;
     }
+
+    //Battistella n fez ainda
+    public void save(Funcionario funcionario) {
+        funcionarioRepository.save(funcionario);
+    }
+
+    public void deleteById(long id) {
+        funcionarioRepository.deleteById(id);
+    }
 }
