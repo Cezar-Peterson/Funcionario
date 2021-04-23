@@ -1,7 +1,6 @@
 package br.com.sistema.controller;
 
 import br.com.sistema.model.Funcionario;
-import br.com.sistema.repository.FuncionarioRepository;
 import br.com.sistema.service.FuncionarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,6 +51,7 @@ public class FuncionarioController {
     @GetMapping("/funcionario/delete/{id}")
     public String deleteFuncionario(@PathVariable long id) {
         try {
+
             funcionarioService.deleteById(id);
 
         } catch (Exception e) {
