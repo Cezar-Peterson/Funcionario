@@ -29,34 +29,53 @@ public class FuncionarioController {
         return "funcionario/add";
     }
 
+    @PostMapping("/funcionario/save")
+    public String save(Funcionario funcionario, Model model){
 
+        if (funcionarioService.findByEmail(funcionario.getEmail()) != null){
+            model.addAttribute("funcionario", funcionario);
+            model.addAttribute("erro", true);
+            model.addAttribute("erroMsg", "O e-mail já foi cadastrado!");
+            return "funcionario/add";
+        }
+
+        if (funcionarioService.save(funcionario)){
+            return "redirect:/funcionario/list";
+        }else{
+            model.addAttribute("funcionario", funcionario);
+            //model.addAttribute("erro", true);
+            return "funcionario/add";
+        }
+
+
+    }
 
 
     //Battistella n fez ainda
+//
+//    @PostMapping("/funcionario/save")
+//    public String save(Funcionario funcionario) {
+//        try {
+//            if(funcionario != null) {
+//                funcionarioService.save(funcionario);
+//            }
+//        } catch (Exception e) {
+//            System.out.println("Erro ao salvar:" + e.getMessage());
+//        }
+//        return "redirect:/funcionario/list";
+//
+//    }
 
-    @PostMapping("/funcionario/save")
-    public String saveFuncionario(Funcionario funcionario) {
-        try {
-            if(funcionario != null) {
-                funcionarioService.save(funcionario);
-            }
-        } catch (Exception e) {
-            System.out.println("Erro ao salvar:" + e.getMessage());
-        }
-        return "redirect:/funcionario/list";
-
-    }
-
-
-    @GetMapping("/funcionario/delete/{id}")
-    public String deleteFuncionario(@PathVariable long id) {
-        try {
-
-            funcionarioService.deleteById(id);
-
-        } catch (Exception e) {
-            System.out.println("Erro ao deletar: " + e.getMessage());
-        }
-        return "redirect:/funcionario/list";
-    }
+//
+//    @GetMapping("/funcionario/delete/{id}")
+//    public String deleteFuncionario(@PathVariable long id) {
+//        try {
+//
+//            funcionarioService.deleteById(id);
+//
+//        } catch (Exception e) {
+//            System.out.println("Erro ao deletar: " + e.getMessage());
+//        }
+//        return "redirect:/funcionario/list";
+//    }
 }

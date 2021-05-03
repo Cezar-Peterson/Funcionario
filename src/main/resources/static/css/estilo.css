@@ -58,3 +58,12 @@ li{
     width: 60%;
     
 }
+
+.container-form{
+    width:70%;
+}
+
+.btn-form{
+    width: 100%;
+    margin-bottom: 8px;
+}

@@ -8,4 +8,8 @@ public interface FuncionarioService {
 
     public List<Funcionario> findAll();
     public Funcionario findById(Long id);
+    public Funcionario findByEmail(String email);
+
+    public boolean save(Funcionario funcionario);
+    //public boolean delete(Long id);
 }
