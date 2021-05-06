@@ -22,8 +22,7 @@ public class FuncionarioServiceImpl implements FuncionarioService{
 
     @Override
     public Funcionario findById(Long id) {
-        //TODO: falta fazer
-        return null;
+        return funcionarioRepository.findById(id).get();
     }
 
     @Override
@@ -46,7 +45,42 @@ public class FuncionarioServiceImpl implements FuncionarioService{
     }
 
     @Override
-    public boolean delete(Long id){ return false;}
+    public String validarFuncionario(Funcionario funcionario){
+        String error = null;
+        Funcionario f;
+
+        if (funcionario.getId()== null) {//Novo funcionario
+            f = funcionarioRepository.findByNome(funcionario.getNome());
+            if (f!= null){
+                error = "Nome já existe.";
+            }
+
+
+            f = funcionarioRepository.findByEmail(funcionario.getEmail());
+            if (f != null ) {
+                if (error != null) error += " ";
+                error += " Já existe um funcionário com esse e-mail.";
+            }
+        }else{//Funcionário Existente
+            f = funcionarioRepository.findByIdNotAndNome(funcionario.getId(), funcionario.getNome());
+            if (f != null){
+                error += " Já existe um funcionário com esse nome.";
+            }
+            f = funcionarioRepository.findByIdNotAndEmail(funcionario.getId(), funcionario.getEmail());
+            if (f != null){
+                if (error != null) error += " ";
+                error += " Já existe um funcionário com esse e-mail.";
+            }
+        }
+
+
+
+
+        return error;
+    }
+
+//    @Override
+//    public boolean delete(Long id){ return false;}
 
     //Battistella n fez ainda
 //    public void save(Funcionario funcionario) {

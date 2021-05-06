@@ -62,7 +62,7 @@
             <td th:text="${funcionario.email}"></td>
             <td th:text="${funcionario.telefone}"></td>
             <td class="td-controle">
-              <a th:href="@{/funcionario/edit}" class="btn btn-outline-dark">
+              <a th:href="@{'/funcionario/edit/' + ${funcionario.id}}" class="btn btn-outline-dark">
                 <i class="far fa-edit"></i>
               </a>
             </td>
@@ -79,43 +79,43 @@
     </div>
  
     
-    
-    <!-- MODAL -->
-    <div class="modal fade" id="deleteModal">
-      <div class="modal-dialog">
-          <div class="modal-content">
-      
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Atenção</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-          
-            <!-- Modal body -->
-            <div class="modal-body">
-                Você realmente deseja deletar o Funcionário?
-            </div>
-          
-            <!-- Modal footer -->
-            <div class="modal-footer">
-              <input type="text" id="id_deletar" hidden>
-              <button type="button" class="btn btn-outline-dark" data-dismiss="modal">
-                <i class="fa fa-ban"></i> Voltar
-          </button>
-          
-                <button type="button" class="btn btn-danger btn-modal-footer" data-dismiss="modal"
-                    th:onclick="deletar('funcionario')">
-                  <i class="fa fa-trash"> </i> Deletar
-          </button>
-          
-          
-            </div>
-        
-          </div>
-      </div>
-  </div>
-      
-  
+<!--    -->
+<!--    &lt;!&ndash; MODAL &ndash;&gt;-->
+<!--    <div class="modal fade" id="deleteModal">-->
+<!--      <div class="modal-dialog">-->
+<!--          <div class="modal-content">-->
+<!--      -->
+<!--            &lt;!&ndash; Modal Header &ndash;&gt;-->
+<!--            <div class="modal-header">-->
+<!--                <h4 class="modal-title">Atenção</h4>-->
+<!--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--            </div>-->
+<!--          -->
+<!--            &lt;!&ndash; Modal body &ndash;&gt;-->
+<!--            <div class="modal-body">-->
+<!--                Você realmente deseja deletar o Funcionário?-->
+<!--            </div>-->
+<!--          -->
+<!--            &lt;!&ndash; Modal footer &ndash;&gt;-->
+<!--            <div class="modal-footer">-->
+<!--              <input type="text" id="id_deletar" hidden>-->
+<!--              <button type="button" class="btn btn-outline-dark" data-dismiss="modal">-->
+<!--                <i class="fa fa-ban"></i> Voltar-->
+<!--          </button>-->
+<!--          -->
+<!--                <button type="button" class="btn btn-danger btn-modal-footer" data-dismiss="modal"-->
+<!--                    th:onclick="deletar('funcionario')">-->
+<!--                  <i class="fa fa-trash"> </i> Deletar-->
+<!--          </button>-->
+<!--          -->
+<!--          -->
+<!--            </div>-->
+<!--        -->
+<!--          </div>-->
+<!--      </div>-->
+<!--  </div>-->
+<!--      -->
+<!--  -->
   
 
 <!-- JS -->

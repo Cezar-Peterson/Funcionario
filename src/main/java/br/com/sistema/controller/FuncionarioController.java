@@ -32,11 +32,14 @@ public class FuncionarioController {
     @PostMapping("/funcionario/save")
     public String save(Funcionario funcionario, Model model){
 
-        if (funcionarioService.findByEmail(funcionario.getEmail()) != null){
+        String msgErro = funcionarioService.validarFuncionario(funcionario);
+        if (msgErro != null){
             model.addAttribute("funcionario", funcionario);
             model.addAttribute("erro", true);
-            model.addAttribute("erroMsg", "O e-mail já foi cadastrado!");
-            return "funcionario/add";
+            model.addAttribute("erroMsg", msgErro);
+
+            if (funcionario.getId() == null) return "funcionario/add";
+            else return "funcionario/edit";
         }
 
         if (funcionarioService.save(funcionario)){
@@ -48,6 +51,12 @@ public class FuncionarioController {
         }
 
 
+    }
+
+    @GetMapping("/funcionario/edit/{id}")
+    public String edit(@PathVariable long id, Model model){
+        model.addAttribute("funcionario", funcionarioService.findById(id));
+        return "funcionario/edit";
     }
 
 
