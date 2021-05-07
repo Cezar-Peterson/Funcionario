@@ -1,11 +1,21 @@
-const showModalDeletar = function(id){
-	$('#id_deletar').val(id)
-	$('#deleteModal').modal('show')
+let path_selected
+let id_selected
+
+
+const showModalDeletar = function(path,id){
+    path_selected = path
+    id_selected = id
+	$('#modalDeletar').modal('show')
+
 }
 
-const deletar = function(nome){
-	let id = $('#id_deletar').val()
-	if (id != 0)
-		window.location.href = '/' + nome + '/delete/' + id
+const deletar = function(){
+    if(path_selected != "" && id_selected != ""){
+        window.location.href='/' + path_selected + '/delete/' + id_selected
+
+    }
+
 }
+
+
 

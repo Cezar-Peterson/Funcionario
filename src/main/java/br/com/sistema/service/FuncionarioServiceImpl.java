@@ -79,15 +79,13 @@ public class FuncionarioServiceImpl implements FuncionarioService{
         return error;
     }
 
-//    @Override
-//    public boolean delete(Long id){ return false;}
+    public boolean deleteById(Long id){
+        try {
+            funcionarioRepository.deleteById(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
 
-    //Battistella n fez ainda
-//    public void save(Funcionario funcionario) {
-//        funcionarioRepository.save(funcionario);
-//    }
-//
-//    public void deleteById(long id) {
-//        funcionarioRepository.deleteById(id);
-//    }
+    }
 }

@@ -60,31 +60,19 @@ public class FuncionarioController {
     }
 
 
-    //Battistella n fez ainda
-//
-//    @PostMapping("/funcionario/save")
-//    public String save(Funcionario funcionario) {
-//        try {
-//            if(funcionario != null) {
-//                funcionarioService.save(funcionario);
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Erro ao salvar:" + e.getMessage());
-//        }
-//        return "redirect:/funcionario/list";
-//
-//    }
+    @GetMapping("/funcionario/delete/{id}")
+    public String delete(@PathVariable long id){
 
-//
-//    @GetMapping("/funcionario/delete/{id}")
-//    public String deleteFuncionario(@PathVariable long id) {
-//        try {
-//
-//            funcionarioService.deleteById(id);
-//
-//        } catch (Exception e) {
-//            System.out.println("Erro ao deletar: " + e.getMessage());
-//        }
-//        return "redirect:/funcionario/list";
-//    }
-}
+        if (funcionarioService.deleteById(id)){
+            return "redirect:/funcionario/list";
+        } else {
+            //TODO: os alunos farão uma mensagem de erro bem bonita aqui, ok
+            //model.addAttribute("funcionario", funcionario);
+            return "funcionario/list";
+        }
+
+
+        return "/redirect:/funcionario/list";
+    }
+
+
