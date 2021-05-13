@@ -17,23 +17,23 @@ public class FuncionarioController {
     //FuncionarioRepository funcionarioRepository;
 
     @GetMapping("/funcionario/list")
-    public String list(Model model){
+    public String list(Model model) {
         model.addAttribute("funcionarios", funcionarioService.findAll());
         System.out.println(funcionarioService.findAll());
         return "funcionario/list";
     }
 
     @GetMapping("/funcionario/add")
-    public String add(Model model){
+    public String add(Model model) {
         model.addAttribute("funcionario", new Funcionario());
         return "funcionario/add";
     }
 
     @PostMapping("/funcionario/save")
-    public String save(Funcionario funcionario, Model model){
+    public String save(Funcionario funcionario, Model model) {
 
         String msgErro = funcionarioService.validarFuncionario(funcionario);
-        if (msgErro != null){
+        if (msgErro != null) {
             model.addAttribute("funcionario", funcionario);
             model.addAttribute("erro", true);
             model.addAttribute("erroMsg", msgErro);
@@ -42,9 +42,9 @@ public class FuncionarioController {
             else return "funcionario/edit";
         }
 
-        if (funcionarioService.save(funcionario)){
+        if (funcionarioService.save(funcionario)) {
             return "redirect:/funcionario/list";
-        }else{
+        } else {
             model.addAttribute("funcionario", funcionario);
             //model.addAttribute("erro", true);
             return "funcionario/add";
@@ -54,16 +54,16 @@ public class FuncionarioController {
     }
 
     @GetMapping("/funcionario/edit/{id}")
-    public String edit(@PathVariable long id, Model model){
+    public String edit(@PathVariable long id, Model model) {
         model.addAttribute("funcionario", funcionarioService.findById(id));
         return "funcionario/edit";
     }
 
 
     @GetMapping("/funcionario/delete/{id}")
-    public String delete(@PathVariable long id){
+    public String delete(@PathVariable long id) {
 
-        if (funcionarioService.deleteById(id)){
+        if (funcionarioService.deleteById(id)) {
             return "redirect:/funcionario/list";
         } else {
             //TODO: os alunos farão uma mensagem de erro bem bonita aqui, ok
@@ -72,7 +72,8 @@ public class FuncionarioController {
         }
 
 
-        return "/redirect:/funcionario/list";
+
     }
+}
 
 

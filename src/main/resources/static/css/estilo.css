@@ -1,3 +1,7 @@
+:root{
+--width-cargo: 50%;
+}
+
 .container-principal{
     margin-top: 16px;
 }
@@ -33,15 +37,39 @@ li{
     
 }
 
+.container-header-cargo{
+     margin-top: 24px;
+        margin-bottom: 24px;
+        padding: 32px;
+        color: #df167b;
+        background-color: #fad1de;
+        border-radius: 15px;
+        text-align: center;
+        width:var(--width-cargo);
+}
+
 .container-funcionario{
     border: 1px solid #df167b;
     border-radius: 15px;
     padding: 16px;
-    
+    width:var(--width-cargo);
+}
+
+.container-cargo{
+    border: 1px solid #df167b;
+    border-radius: 15px;
+    padding: 16px;
+width:var(--width-cargo);
 }
 
 .td-controle{
     width: 90px;
+}
+
+.container-cargo-btn-novo {
+    width:var(--width-cargo);
+    text-align: right;
+    margin-bottom: 8px;
 }
 
 .container-btn-novo{
@@ -59,6 +87,13 @@ li{
     
 }
 
+.container-form-cargo{
+    border: 1px solid #df167b;
+    border-radius: 15px;
+    padding: 16px;
+    width: var(--width-cargo);
+}
+
 .container-form{
     width:70%;
 }
@@ -72,3 +107,6 @@ li{
     background: #fad1de;
     color: white;
 }
+
+
+
