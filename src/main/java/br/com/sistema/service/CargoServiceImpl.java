@@ -4,6 +4,7 @@ import br.com.sistema.model.Cargo;
 import br.com.sistema.model.Funcionario;
 import br.com.sistema.repository.CargoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class CargoServiceImpl implements CargoService{
 
     @Override
     public List<Cargo> findAll() {
-        return cargoRepository.findAll();
+        return cargoRepository.findAll(Sort.by("nome"));
     }
 
     @Override

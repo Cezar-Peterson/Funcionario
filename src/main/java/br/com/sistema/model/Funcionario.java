@@ -23,6 +23,10 @@ public class Funcionario {
     @NotNull
     private String telefone;
 
+    @OneToOne
+    @JoinColumn(name = "cargo_id", referencedColumnName = "id")
+    private Cargo cargo;
+
     public Long getId() {
         return id;
     }
@@ -53,6 +57,14 @@ public class Funcionario {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
     }
 
     @Override

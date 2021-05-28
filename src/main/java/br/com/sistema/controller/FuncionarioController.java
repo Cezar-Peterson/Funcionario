@@ -1,6 +1,7 @@
 package br.com.sistema.controller;
 
 import br.com.sistema.model.Funcionario;
+import br.com.sistema.service.CargoServiceImpl;
 import br.com.sistema.service.FuncionarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,9 @@ public class FuncionarioController {
 
     @Autowired
     FuncionarioServiceImpl funcionarioService;
-    //FuncionarioRepository funcionarioRepository;
+
+    @Autowired
+    CargoServiceImpl cargoService;
 
     @GetMapping("/funcionario/list")
     public String list(Model model) {
@@ -26,6 +29,7 @@ public class FuncionarioController {
     @GetMapping("/funcionario/add")
     public String add(Model model) {
         model.addAttribute("funcionario", new Funcionario());
+        model.addAttribute("cargos", cargoService.findAll());
         return "funcionario/add";
     }
 
@@ -36,7 +40,7 @@ public class FuncionarioController {
         if (msgErro != null) {
             model.addAttribute("funcionario", funcionario);
             model.addAttribute("erro", true);
-            model.addAttribute("erroMsg", msgErro);
+            model.addAttribute("erro ao salvar o funcionário", msgErro);
 
             if (funcionario.getId() == null) return "funcionario/add";
             else return "funcionario/edit";
@@ -56,18 +60,21 @@ public class FuncionarioController {
     @GetMapping("/funcionario/edit/{id}")
     public String edit(@PathVariable long id, Model model) {
         model.addAttribute("funcionario", funcionarioService.findById(id));
+        model.addAttribute("cargos", cargoService.findAll());
         return "funcionario/edit";
     }
 
 
     @GetMapping("/funcionario/delete/{id}")
-    public String delete(@PathVariable long id) {
+    public String delete(@PathVariable long id, Funcionario funcionario, Model model) {
 
+        String msgErro = funcionarioService.validarFuncionario(funcionario);
         if (funcionarioService.deleteById(id)) {
             return "redirect:/funcionario/list";
         } else {
-            //TODO: os alunos farão uma mensagem de erro bem bonita aqui, ok
-            //model.addAttribute("funcionario", funcionario);
+            model.addAttribute("funcionario", funcionario);
+            model.addAttribute("erro", true);
+            model.addAttribute("Erro ao deletar funcionário", msgErro);
             return "funcionario/list";
         }
 

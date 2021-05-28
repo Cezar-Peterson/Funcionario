@@ -1,5 +1,6 @@
 :root{
 --width-cargo: 50%;
+--width-projeto: 90%
 }
 
 .container-principal{
@@ -45,21 +46,32 @@ li{
         background-color: #fad1de;
         border-radius: 15px;
         text-align: center;
-        width:var(--width-cargo);
+
+}
+
+.container-header-projeto{
+     margin-top: 24px;
+            margin-bottom: 24px;
+            padding: 32px;
+            color: #df167b;
+            background-color: #fad1de;
+            border-radius: 15px;
+            text-align: center;
+            width: var(--width-projeto);
 }
 
 .container-funcionario{
     border: 1px solid #df167b;
     border-radius: 15px;
     padding: 16px;
-    width:var(--width-cargo);
+    width:80%;
 }
 
 .container-cargo{
     border: 1px solid #df167b;
     border-radius: 15px;
     padding: 16px;
-width:var(--width-cargo);
+width:80%;
 }
 
 .td-controle{
@@ -67,13 +79,19 @@ width:var(--width-cargo);
 }
 
 .container-cargo-btn-novo {
-    width:var(--width-cargo);
+    width:80%;
+    text-align: right;
+    margin-bottom: 8px;
+}
+
+.container-projeto-btn-novo{
+    width:var(--width-projeto);
     text-align: right;
     margin-bottom: 8px;
 }
 
 .container-btn-novo{
-    width: 100%;
+    width:80%;
     text-align: right;
     margin-bottom: 8px;
 }

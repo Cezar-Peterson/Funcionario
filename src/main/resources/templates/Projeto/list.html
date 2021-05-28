@@ -27,23 +27,23 @@
                     <a class="nav-link" th:href="@{/funcionario/list}">Funcionário</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" th:href="@{/cargo/list}">Cargo</a>
+                    <a class="nav-link" th:href="@{/cargo/list}">Cargo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/projeto/list}">Projeto</a>
+                    <a class="nav-link active" th:href="@{/projeto/list}">Projeto</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="container container-header-cargo" >
-    <h3>Cargo</h3>
+<div class="container container-header-projeto" >
+    <h3>Projeto</h3>
 </div>
 
 
-<div class="container container-cargo-btn-novo ">
-    <a th:href="@{/cargo/add}"
+<div class="container container-projeto-btn-novo ">
+    <a th:href="@{/projeto/add}"
        class="btn btn-outline-dark">
         <i class="fa fa-file"></i> Novo
     </a>
@@ -51,25 +51,35 @@
 
 
 
-<div class="container container-cargo table-responsive" >
+<div class="container container-projeto table-responsive" >
     <table class="table table-striped table-hover">
         <thead>
         <tr class="table-dark">
-            <th>  Código </th>
-            <th colspan="3"> Nome</th>
+            <th> Código </th>
+            <th> Nome</th>
+            <th> Status</th>
+            <th> Risco</th>
+            <th> Orçamento</th>
+            <th> Data Inicial</th>
+            <th colspan="3"> Data final</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="cargo : ${cargos}">
-            <td th:text="${cargo.id}"></td>
-            <td th:text="${cargo.nome}"></td>
+        <tr th:each="projeto : ${projetos}">
+            <td th:text="${projeto.id}"></td>
+            <td th:text="${projeto.nome}"></td>
+            <td th:text="${projeto.status}"></td>
+            <td th:text="${projeto.risco}"></td>
+            <td th:text="${'R$ '+ #numbers.formatDecimal(projeto.orcamento, 1, 'DEFAULT', 2,'DEFAULT')}"></td>
+            <td th:text="${#dates.format(projeto.dataInicial, 'dd/MM/yyyy')}"></td>
+            <td th:text="${#dates.format(projeto.dataFinal, 'dd/MM/yyyy')}"></td>
             <td class="td-controle">
-                <a th:href="@{'/cargo/edit/' + ${cargo.id}}" class="btn btn-outline-dark">
+                <a th:href="@{'/projeto/edit/' + ${projeto.id}}" class="btn btn-outline-dark">
                     <i class="far fa-edit"></i>
                 </a>
             </td>
             <td class="td-controle">
-                <a th:onclick="|showModalDeletar('cargo', ${cargo.id})|" class="btn btn-outline-danger" >
+                <a th:onclick="|showModalDeletar('projeto', ${projeto.id})|" class="btn btn-outline-danger" >
                     <i class="fa fa-trash"></i>
                 </a>
             </td>

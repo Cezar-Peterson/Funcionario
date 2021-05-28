@@ -27,10 +27,10 @@
                     <a class="nav-link" th:href="@{/funcionario/list}">Funcionário</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" th:href="@{/cargo/list}">Cargo</a>
+                    <a class="nav-link " th:href="@{/cargo/list}">Cargo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/projeto/list}">Projeto</a>
+                    <a class="nav-link active" th:href="@{/projeto/list}">Projeto</a>
                 </li>
             </ul>
         </div>
@@ -39,13 +39,13 @@
 
 <!--CONTEÚDO-->
 <div class="container container-header-cargo container-form" >
-    <h3>Cargo</h3>
+    <h3>Projeto</h3>
 </div>
 
 <div class="container container-form-cargo container-form">
-    <form th:action="@{/cargo/save}"
+    <form th:action="@{/projeto/save}"
           method="post"
-          th:object="${cargo}"
+          th:object="${projeto}"
     >
 
         <div th:if="${erro}" class="alert alert-danger">
@@ -58,23 +58,74 @@
         <div class="form-floating mb-3">
             <input type="number" class="form-control"
                    id="floatingInputId" placeholder="Código"
-                   readonly th:field="${cargo.id}">
+                   disabled th:field="*{id}">
             <label for="floatingInputId">Código</label>
         </div>
 
         <div class="form-floating mb-3">
             <input type="text" class="form-control"
                    id="floatingInputNome" placeholder="Nome"
-                   th:field="${cargo.nome}" required>
-
+                   th:field="*{nome}" required>
 
             <label for="floatingInputNome">Nome</label>
         </div>
 
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control"
+                   id="floatingInputDescricao" placeholder="Descrição do projeto"
+                   th:field="*{descricao}" required>
+            <label for="floatingInputDescricao">Descrição do projeto</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <select class="form-select" id="floatingSelectStatus"
+                    aria-label="Selecione o status"
+                    th:field="*{status}" required>
+                <option value="Iniciado">Iniciado</option>
+                <option value="Planejado">Planejado</option>
+                <option value="Em andamento">Em andamento</option>
+                <option value="Finalizado">Finalizado</option>
+                <option value="Cancelado">Cancelado</option>
+            </select>
+            <label for="floatingSelectStatus">Selecione o status</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <select class="form-select" id="floatingSelectRisco"
+                    aria-label="Selecione o risco"
+                    th:field="*{risco}" required>
+                <option value="Baixo">Baixo</option>
+                <option value="Intermediario">Intermediário</option>
+                <option value="Alto">Alto</option>
+            </select>
+            <label for="floatingSelectRisco">Selecione o risco</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" step="0.01"
+                   id="floatingInputOrcamento" placeholder="Orçamento"
+                   th:field="*{orcamento}" required>
+            <label for="floatingInputOrcamento">Orçamento</label>
+        </div>
+
+        <div class="row form-floating mb-3">
+            <div class="form-floating col">
+                <input type="date" class="form-control"
+                       id="floatingInputDataInicial" placeholder="  Data Inicial"
+                       th:field="*{dataInicial}" required>
+                <label for="floatingInputDataInicial">  Data Inicial</label>
+            </div>
+            <div class="form-floating col">
+                <input type="date" class="form-control"
+                       id="floatingInputDataFinal" placeholder="  Data Final"
+                       th:field="*{dataFinal}" required>
+                <label for="floatingInputDataFinal">  Data Final</label>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col">
-                <a th:href="@{/cargo/list}"
+                <a th:href="@{/projeto/list}"
                    class="btn btn-outline-secondary btn-form" >
                     <i class="fa fa-backspace"></i> Voltar
                 </a>

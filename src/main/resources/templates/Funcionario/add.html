@@ -29,6 +29,9 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/cargo/list}">Cargo</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/projeto/list}">Projeto</a>
+                </li>
             </ul>
           </div>
         </div>
@@ -63,8 +66,6 @@
             <input type="text" class="form-control" 
                 id="floatingInputNome" placeholder="Nome"
                 th:field="*{nome}" required>
-
-                
             <label for="floatingInputNome">Nome</label>
           </div>
 
@@ -83,6 +84,20 @@
                 th:field="*{telefone}" required>
             <label for="floatingInput-telefone">Telefone</label>
           </div>
+
+            <div class="form-floating mb-3">
+                <select class="form-select" id="floatingSelect" aria-label="Selecione um cargo"
+                        th:field="*{cargo.id}" required>
+                    <option th:each="c : ${cargos}"
+                            th:value="${c.id}"
+                            th:text="${c}"></option>
+
+                </select>
+                <label for="floatingSelect">Selecione um cargo</label>
+            </div>
+
+
+
             <!-- BATISTA QUE FEZ -->
             <div class="row">
                 <div class="col">

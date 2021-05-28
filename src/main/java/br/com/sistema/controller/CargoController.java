@@ -4,6 +4,7 @@ import br.com.sistema.model.Cargo;
 import br.com.sistema.model.Funcionario;
 import br.com.sistema.service.CargoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,7 +46,7 @@ public class CargoController {
         } else {
             model.addAttribute("cargo", cargo);
             model.addAttribute("erro", true);
-            model.addAttribute("erroMsg", "Erro ao salvar");
+            model.addAttribute("Erro ao salvar cargo", msgErro);
             return "cargo/add";
         }
     }
@@ -57,12 +58,15 @@ public class CargoController {
     }
 
     @GetMapping("/cargo/delete/{id}")
-    public String delete(@PathVariable Long id){
+    public String delete(@PathVariable Long id, Cargo cargo, Model model){
+        String msgErro = cargoService.validarCargo(cargo);
             if (cargoService.deleteById(id)){
-                return "redirect: /cargo/list";
+                return "redirect:/cargo/list";
             }else{
-                //TODO: os alunos deverão fazer o controle de erros
-                return "redirect: /cargo/list";
+                model.addAttribute("cargo", cargo);
+                model.addAttribute("erro", true);
+                model.addAttribute("Erro ao deletar cargo", msgErro);
+                return "redirect:/cargo/list";
             }
 
     }
