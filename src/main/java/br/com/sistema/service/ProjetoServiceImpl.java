@@ -30,7 +30,7 @@ public class ProjetoServiceImpl implements ProjetoService{
 
     @Override
     public boolean save(Projeto projeto) {
-        try {
+        try{
             projetoRepository.save(projeto);
             return true;
         }catch (Exception e){

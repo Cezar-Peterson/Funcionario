@@ -118,6 +118,22 @@
             </div>
         </div>
 
+        <div class="form-floating mb-3">
+            <select class="form-select" id="floatingSelectGerente"
+                    aria-label="Selecione o gerente"
+                    th:field="${projeto.gerente.id}" required>
+                <option th:each="g : ${gerentes}"
+                        th:value="${g.id}"
+                        th:text="${g.nome}">
+                </option>
+
+            </select>
+            <label for="floatingSelectGerente">Selecione o gerente</label>
+        </div>
+
+
+
+
         <div class="row">
             <div class="col">
                 <a th:href="@{/projeto/list}"

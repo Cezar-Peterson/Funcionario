@@ -69,9 +69,8 @@ public class Funcionario {
 
     @Override
     public String toString(){
-        return "Nome: " + nome +
-                ", e-mail: " + email +
-                ", telefone: " + telefone;
+        return  nome
+               ;
     }
 
 

@@ -61,7 +61,8 @@
             <th> Risco</th>
             <th> Orçamento</th>
             <th> Data Inicial</th>
-            <th colspan="3"> Data final</th>
+            <th> Data final</th>
+            <th colspan="3"> Gerente</th>
         </tr>
         </thead>
         <tbody>
@@ -73,6 +74,7 @@
             <td th:text="${'R$ '+ #numbers.formatDecimal(projeto.orcamento, 1, 'DEFAULT', 2,'DEFAULT')}"></td>
             <td th:text="${#dates.format(projeto.dataInicial, 'dd/MM/yyyy')}"></td>
             <td th:text="${#dates.format(projeto.dataFinal, 'dd/MM/yyyy')}"></td>
+            <td th:text="${projeto.gerente}"></td>
             <td class="td-controle">
                 <a th:href="@{'/projeto/edit/' + ${projeto.id}}" class="btn btn-outline-dark">
                     <i class="far fa-edit"></i>
