@@ -80,6 +80,13 @@ public class FuncionarioServiceImpl implements FuncionarioService{
         return error;
     }
 
+
+
+    @Override
+    public List<Funcionario> findByCargoIn(List <Cargo> cargos) {
+        return funcionarioRepository.findByCargoIn(cargos);
+    }
+
     @Override
     public List<Funcionario> findByCargo(Cargo cargo) {
         return funcionarioRepository.findByCargo(cargo);

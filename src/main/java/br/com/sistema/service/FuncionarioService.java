@@ -12,7 +12,9 @@ public interface FuncionarioService {
     public Funcionario findByEmail(String email);
     public String validarFuncionario(Funcionario funcionario);
 
+
     public List<Funcionario> findByCargo(Cargo cargo);
+    public List<Funcionario> findByCargoIn(List<Cargo> cargos);
 
     public boolean save(Funcionario funcionario);
     public boolean deleteById(Long id);

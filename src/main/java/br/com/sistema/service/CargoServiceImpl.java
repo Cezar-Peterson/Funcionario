@@ -32,6 +32,11 @@ public class CargoServiceImpl implements CargoService{
     }
 
     @Override
+    public List<Cargo> findByNomeNot(String nome) {
+        return cargoRepository.findByNomeNot(nome);
+    }
+
+    @Override
     public String validarCargo(Cargo cargo) {
         String error = null;
         Cargo c;

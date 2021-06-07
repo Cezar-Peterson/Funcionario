@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class ProjetoController {
     @Autowired
@@ -33,7 +35,9 @@ public class ProjetoController {
     public String add(Model model){
         model.addAttribute("projeto", new Projeto());
         Cargo cargo = cargoService.findByNome("Gerente");
+        List<Cargo> cargos = cargoService.findByNomeNot("Gerente");
         model.addAttribute("gerentes", funcionarioService.findByCargo(cargo));
+        model.addAttribute("funcionarios", funcionarioService.findByCargoIn(cargos));
         return "projeto/add";
     }
 
@@ -41,7 +45,9 @@ public class ProjetoController {
     public String add(@PathVariable Long id, Model model){
         model.addAttribute("projeto", projetoService.findById(id));
         Cargo cargo = cargoService.findByNome("Gerente");
+        List<Cargo> cargos = cargoService.findByNomeNot("Gerente");
         model.addAttribute("gerentes", funcionarioService.findByCargo(cargo));
+        model.addAttribute("funcionarios", funcionarioService.findByCargoIn(cargos));
         return "projeto/edit";
     }
 

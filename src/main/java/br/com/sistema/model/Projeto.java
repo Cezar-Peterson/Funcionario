@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Date;
+import java.util.List;
 
 @Entity(name = "projeto")
 public class Projeto {
@@ -39,6 +40,13 @@ public class Projeto {
     @OneToOne
     @JoinColumn(name = "gerente_id", referencedColumnName = "id")
     private Funcionario gerente;
+
+    @ManyToMany
+    @JoinTable(name = "projeto_funcionario",
+            joinColumns = @JoinColumn(name = "projeto_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "funcionario_id", referencedColumnName = "id")
+    ) //isso é uma tabela sendo criada
+    private List<Funcionario> funcionarios;
 
     public Long getId() {
         return id;
@@ -110,6 +118,14 @@ public class Projeto {
 
     public void setGerente(Funcionario gerente) {
         this.gerente = gerente;
+    }
+
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
     }
 
     @Override

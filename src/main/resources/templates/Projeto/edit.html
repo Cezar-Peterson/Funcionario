@@ -131,6 +131,22 @@
             <label for="floatingSelectGerente">Selecione o gerente</label>
         </div>
 
+        <div class="form-floating mb-3">
+            <select class="form-select select-multiple " id="floatingSelectFuncionarios"
+                    aria-label="Selecione um funcionário"
+                    th:field="${funcionarios}"
+                    multiple >
+                <option th:each="pf : ${funcionarios}"
+
+                        th:value="${pf.id}"
+                        th:text="${pf.nome}">
+
+                </option>
+
+            </select>
+            <label for="floatingSelectFuncionarios">Selecione um funcionário</label>
+
+        </div>
 
 
 
